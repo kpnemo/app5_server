@@ -1,7 +1,7 @@
 {
   "name": "app5_server",
   "version": "1.0.0",
-  "description": "",
+  "description": "* git pull\r  * npm install (inside the folder)\r  * node server.js in order to start the server",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,5 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kpnemo/app5_server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kpnemo/app5_server/issues"
+  },
+  "homepage": "https://github.com/kpnemo/app5_server#readme"
 }
