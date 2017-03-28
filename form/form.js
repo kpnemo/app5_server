@@ -1,24 +1,24 @@
-var express = require('express');
-var app = express();
+function getParameterByName(name, url) {
+	if (!url) {
+		url = window.location.href;
+	}
+	name = name.replace(/[\[\]]/g, "\\$&");
+	var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+		results = regex.exec(url);
+	if (!results) return null;
+	if (!results[2]) return '';
+	return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 
 
-var bodyParser = require('body-parser');
-var multer = require('multer'); // v1.0.5
-var upload = multer(); // for parsing multipart/form-data
+$(function(){
 
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
-app.post('/profile', upload.array(), function (req, res, next) {
-    console.log(req.body);
-    res.json(req.body);
+    var formSubmitted = getParameterByName('submited', window.location.href);
+    if(formSubmitted == 'true'){
+        $('h1').show();
+        $('form').hide();
+    } else {
+        $('h1').hide();
+        $('form').show();
+    }
 });
-
-
-app.get('/form_simple', function(req, res){
-    res.send('hello world');
-});
-
-app.use('/simple_form', express.static('/form'));
-
-app.listen(3000);
