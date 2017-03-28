@@ -19,5 +19,6 @@
   "bugs": {
     "url": "https://github.com/kpnemo/app5_server/issues"
   },
-  "homepage": "https://github.com/kpnemo/app5_server#readme"
+  "homepage": "https://github.com/kpnemo/app5_server#readme",
+  "devDependencies": {}
 }
