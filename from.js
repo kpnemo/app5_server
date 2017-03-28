@@ -1,18 +1,26 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var exampleDB = require('./modules/file_handler_example');
+
+var upload = multer();
 var app = express();
 
-var bodyParser = require('body-parser');
-var multer = require('multer'); // v1.0.5
-var upload = multer(); // for parsing multipart/form-data
-
 app.use(express.static(__dirname + '/form'));
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.post('/', function (req, res, next) {
 	var data = req.body;
-	console.log(data);
-	res.redirect('/?submited=true');
+	if(exampleDB.addData(data)) {
+		res.redirect('/?submited=true');
+	} else {
+		res.redirect('/?submited=false');
+	}
+});
+
+app.get('/getExample_1', function(req, res){
+	res.status(200).json(exampleDB.getData());
 });
 
 app.listen(3000);

@@ -10,15 +10,35 @@ function getParameterByName(name, url) {
 	return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+$(function(){
+    $.getJSON('/getExample_1', function(jsonData){
+        var $table = $('<table></table>');
+        $table.append('<thead><tr><th>Name</th><th>Email</th></tr></thead>');
+        $table.append('<tbody></tbody>');
+
+        for(var i=0; i < jsonData.DB.length; i++){
+            $table.find('tbody').append('<tr><td>'+jsonData.DB[i].name+'</td><td>'+jsonData.DB[i].email+'</td></tr>')
+        }
+
+
+        console.log($table);
+        console.log('I am going to prepend');
+        $('h1').before($table);
+    });
+});
+
 
 $(function(){
 
     var formSubmitted = getParameterByName('submited', window.location.href);
     if(formSubmitted == 'true'){
         $('h1').show();
-        $('form').hide();
+        $('form, h2').hide();
+    } else if(formSubmitted == 'false') {
+        $('h2').show();
+        $('h1, form').hide();
     } else {
-        $('h1').hide();
+        $('h1, h2').hide();
         $('form').show();
     }
 });
