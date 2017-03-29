@@ -1,3 +1,6 @@
+var email= $("#email").val();
+
+
 function getParameterByName(name, url) {
 	if (!url) {
 		url = window.location.href;
@@ -30,27 +33,29 @@ $(function(){
 
 
 function checkEmail(){
-	$.getJSON('/getExample_1', function(jsonData) {
-		var dataEMail = jsonData.DB;
 
-		var email = $("#email").val();
-		for(var i=0; i < jsonData.DB.length; i++){
-			if(dataEMail[i].email === email){
-				return true;
+		var dataDB =  $.getJSON('/getExample_1', function(){});
+
+		var hasEmail = function(email){
+
+			var i = null;
+			for(i=0; i < data.DB.length; i++){
+				if(dataDB[i].email != email){
+					return true;
+				}
 			}
+			return false;
+
 		}
-		return false;
-
-
-
-	});
-};
+}
 
 
 function validateForm() {
+	var dataDB =  $.getJSON('/getExample_1', function(){});
+	console.log(dataDB);
 
 
-	var email = $("#email").val();
+
 	if ((/(.+)@(.+){2,}\.(.+){2,}/.test(email))) {
 		console.log(email);
 	} else {
