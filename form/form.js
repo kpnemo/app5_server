@@ -1,4 +1,4 @@
-var email= $("#email").val();
+
 
 
 function getParameterByName(name, url) {
@@ -35,18 +35,16 @@ $(function(){
 function checkEmail(){
 
 		var dataDB =  $.getJSON('/getExample_1', function(){});
-
-		var hasEmail = function(email){
-
-			var i = null;
-			for(i=0; i < data.DB.length; i++){
-				if(dataDB[i].email != email){
-					return true;
-				}
-			}
-			return false;
-
+		console.log(dataDB);
+	var email = $("#email").val();
+	var i = null;
+	for(i=0; i < dataDB.length; i++){
+		if(dataDB[i].email === email){
+			return true;
 		}
+	}
+	return false;
+
 }
 
 
@@ -54,11 +52,28 @@ function validateForm() {
 	var dataDB =  $.getJSON('/getExample_1', function(){});
 	console.log(dataDB);
 
+	var email= $("#email").val();
+	console.log('email entered:', email)
+
+	var hasEmail = function(){
+		var i = null;
+		for(i=0; i < dataDB.length; i++){
+			if(dataDB[i].email === email){
+				return true;
+			}
+		}
+		return false;
+
+	}
 
 
-	if ((/(.+)@(.+){2,}\.(.+){2,}/.test(email))) {
-		console.log(email);
-	} else {
+	if  (hasEmail == 'true'){
+		console.log('email exists');
+	}
+	 else if ((/(.+)@(.+){2,}\.(.+){2,}/.test(email))) {
+	console.log(email);
+	}
+	else {
 		alert("Please enter a valid email");
 		return false;
 	}
