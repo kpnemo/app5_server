@@ -13,9 +13,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.post('/', function (req, res, next) {
 	var data = req.body;
 	if(exampleDB.addData(data)) {
-		res.redirect('/?submited=true');
+		res.status(200).json(data);
 	} else {
-		res.redirect('/?submited=false');
+		res.status(501).json({error: 'Something bad happened'});
 	}
 });
 
@@ -24,3 +24,4 @@ app.get('/getExample_1', function(req, res){
 });
 
 app.listen(3100);
+console.log('Listening on port 3100...');

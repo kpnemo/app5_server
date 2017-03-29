@@ -1,11 +1,8 @@
-.jumobtron{
-	background-color: bisque;
-
-
+.container{
+	padding-top: 40px;
+	padding-bottom: 80px;
 }
 
-.container{
-	background-color: aqua;
-
-
+.table {
+	margin-bottom: 40px!important;
 }

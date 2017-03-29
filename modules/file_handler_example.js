@@ -21,6 +21,12 @@ function _saveFile(data){
 	fs.writeFileSync(filePath, dataToSave, 'utf8');
 };
 
+
+function _fixDB(){
+	//TODO: implement clear DB, delete all the records with no email or name or both
+};
+
+
 /**
  * Open file and read data from, convert to JSON and return
  * @private
@@ -67,5 +73,6 @@ function _saveDataToFile(data){
 module.exports = {
 	getData: _getDataFromFile,
 	addData: _appendDataToFile,
-	saveData: _saveDataToFile
+	saveData: _saveDataToFile,
+	fixDB: _fixDB
 };
