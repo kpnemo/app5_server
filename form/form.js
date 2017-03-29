@@ -12,7 +12,8 @@ function getParameterByName(name, url) {
 
 $(function(){
     $.getJSON('/getExample_1', function(jsonData){
-        var $table = $('<table></table>');
+
+    	var $table = $('<table></table>');
         $table.append('<thead><tr><th>Name</th><th>Email</th></tr></thead>');
         $table.append('<tbody></tbody>');
 
@@ -26,6 +27,24 @@ $(function(){
         $('h1').before($table);
     });
 });
+
+
+function checkEmail(){
+	$.getJSON('/getExample_1', function(jsonData) {
+		var dataEMail = jsonData.DB;
+
+		var email = $("#email").val();
+		for(var i=0; i < jsonData.DB.length; i++){
+			if(dataEMail[i].email === email){
+				return true;
+			}
+		}
+		return false;
+
+
+
+	});
+};
 
 
 function validateForm() {
