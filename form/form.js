@@ -28,6 +28,18 @@ $(function(){
 });
 
 
+function validateEmail() {
+	var text = document.forms["myForm"]["email"].value;
+
+	var atpos = text.indexof("@");
+	var dotpos = text.lastIndexOf(".");
+
+	if (atpost < 1 || dotpos < atpos + 2 || dotpos + 2 > text.length) {
+		alert("Please enter a valid email address");
+		return false;
+	}
+}
+
 $(function(){
 
     var formSubmitted = getParameterByName('submited', window.location.href);
