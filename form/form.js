@@ -28,16 +28,17 @@ $(function(){
 });
 
 
-function validateEmail() {
-	var text = document.forms["myForm"]["email"].value;
+function validateForm() {
 
-	var atpos = text.indexof("@");
-	var dotpos = text.lastIndexOf(".");
 
-	if (atpost < 1 || dotpos < atpos + 2 || dotpos + 2 > text.length) {
-		alert("Please enter a valid email address");
+	var email = $("#email").val();
+	if ((/(.+)@(.+){2,}\.(.+){2,}/.test(email))) {
+		console.log(email);
+	} else {
+		alert("Please enter a valid email");
 		return false;
 	}
+
 }
 
 $(function(){

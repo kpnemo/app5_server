@@ -23,4 +23,4 @@ app.get('/getExample_1', function(req, res){
 	res.status(200).json(exampleDB.getData());
 });
 
-app.listen(3000);
+app.listen(3100);
